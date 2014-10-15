@@ -80,7 +80,7 @@
 //    button.backgroundColor=[UIColor blackColor];
     [cell addSubview:button];
     [button addTarget:self action:@selector(sure:) forControlEvents:UIControlEventTouchUpInside];
-    }
+    }cd
 //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDemoApplicationDirectory, NSUserDomainMask, YES);
 //    NSLog(@"%@",paths);
     return cell;
