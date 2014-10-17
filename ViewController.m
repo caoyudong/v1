@@ -19,9 +19,9 @@
     [super viewDidLoad];
     
     NSDictionary *dicObj1 = [[NSDictionary alloc]initWithObjectsAndKeys:@"head",@"left_img",@"1",@"up_label",@"1的详情",@"down_label", nil];
-    NSDictionary *dicObj2 = [[NSDictionary alloc]initWithObjectsAndKeys:@"head",@"left_img",@"2",@"up_label",@"2的详情",@"down_label", nil];
+    NSDictionary *dicObj2 = [[NSDictionary alloc]initWithObjectsAndKeys:@"bo",@"left_img",@"2",@"up_label",@"2的详情",@"down_label", nil];
     NSDictionary *dicObj3 = [[NSDictionary alloc]initWithObjectsAndKeys:@"head",@"left_img",@"3",@"up_label",@"3的详情",@"down_label", nil];
-    self.listData = [[NSMutableArray alloc]initWithObjects:dicObj1,dicObj2,dicObj3, nil];
+    self.listData = [[NSArray alloc]initWithObjects:dicObj1,dicObj2,dicObj3, nil];
     
     m_tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height) style:UITableViewStylePlain];
 //    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"1",@"2",@"2",@"3",@"3"
@@ -35,7 +35,7 @@
     
     m_tableview.delegate = self;
     m_tableview.dataSource = self;
-    [self.view addSubview:m_tableview];
+    [[self view] addSubview:m_tableview];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -58,7 +58,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
-//    }
+  // }
     
     UIImage *left_image = [UIImage imageNamed:[[self.listData objectAtIndex:indexPath.row]objectForKey:@"left_img"]];
     
@@ -76,22 +76,25 @@
     [cell addSubview:down_label];
         UIButton *button= [UIButton buttonWithType:UIButtonTypeRoundedRect];
         button.frame = CGRectMake(600, 20, 60, 20);
+        
     [button setTitle:@"点击" forState:UIControlStateNormal];
 //    button.backgroundColor=[UIColor blackColor];
     [cell addSubview:button];
     [button addTarget:self action:@selector(sure:) forControlEvents:UIControlEventTouchUpInside];
-    }cd
+    
+    }
+    
 //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDemoApplicationDirectory, NSUserDomainMask, YES);
 //    NSLog(@"%@",paths);
     return cell;
 }
 
-//-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NaviController *navicontroller=[NaviController new];
-//    [self.navigationController pushViewController:navicontroller animated:true];
-//
-//    
-//}
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NaviController *navicontroller=[NaviController new];
+    [self.navigationController pushViewController:navicontroller animated:true];
+
+    
+}
 -(void)sure:(id)sender
 {
     NaviController *navicontroller=[NaviController new];

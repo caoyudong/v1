@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface NaviController : UIViewController
-
+#import "ThirdViewController.h"
+@interface NaviController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+    UITableView *m_tableview;
+}
+@property(nonatomic,retain)NSArray *listdata;
 @end
